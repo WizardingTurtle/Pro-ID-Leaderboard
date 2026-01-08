@@ -5,43 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Leaderboard</title>
 
-  <!-- Link external CSS -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
-  <div class="leaderboard">
-    <div class="title">🏆 Leaderboard</div>
-    <div id="leaderboardList"></div>
-  </div>
+  <!-- Animated WebP Background -->
+  <div class="background"></div>
 
-  <script>
-    // Example JSON payload (can be replaced with API data)
-    const leaderboardData = [
-      { name: "Alice", score: 980 },
-      { name: "Bob", score: 870 },
-      { name: "Charlie", score: 820 },
-      { name: "Diana", score: 790 }
-    ];
+  <!-- Overlay for contrast -->
+  <div class="overlay"></div>
 
-    const leaderboardList = document.getElementById("leaderboardList");
+  <!-- Leaderboard Content -->
+  <main class="leaderboard">
+    <h1 class="title">🏆 Leaderboard</h1>
+    <section id="leaderboardList" aria-live="polite"></section>
+  </main>
 
-    leaderboardData
-      .sort((a, b) => b.score - a.score)
-      .forEach((player, index) => {
-        const playerRow = document.createElement("div");
-        playerRow.className = "player";
-
-        playerRow.innerHTML = `
-          <div class="rank">${index + 1}</div>
-          <div class="name">${player.name}</div>
-          <div class="score">${player.score}</div>
-        `;
-
-        leaderboardList.appendChild(playerRow);
-      });
-  </script>
-
+  <!-- Supabase-powered JS -->
+  <script type="module" src="script.js"></script>
 </body>
 </html>
