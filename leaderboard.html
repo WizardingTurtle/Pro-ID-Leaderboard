@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leaderboard</title>
+
+  <!-- Link external CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <div class="leaderboard">
+    <div class="title">🏆 Leaderboard</div>
+    <div id="leaderboardList"></div>
+  </div>
+
+  <script>
+    // Example JSON payload (can be replaced with API data)
+    const leaderboardData = [
+      { name: "Alice", score: 980 },
+      { name: "Bob", score: 870 },
+      { name: "Charlie", score: 820 },
+      { name: "Diana", score: 790 }
+    ];
+
+    const leaderboardList = document.getElementById("leaderboardList");
+
+    leaderboardData
+      .sort((a, b) => b.score - a.score)
+      .forEach((player, index) => {
+        const playerRow = document.createElement("div");
+        playerRow.className = "player";
+
+        playerRow.innerHTML = `
+          <div class="rank">${index + 1}</div>
+          <div class="name">${player.name}</div>
+          <div class="score">${player.score}</div>
+        `;
+
+        leaderboardList.appendChild(playerRow);
+      });
+  </script>
+
+</body>
+</html>
