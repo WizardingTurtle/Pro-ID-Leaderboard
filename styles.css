@@ -7,7 +7,7 @@
 .background {
     position: fixed;
     inset: 0;
-    background-image: url("background.webp");
+    background-image: url("background.gif");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -44,6 +44,22 @@ body {
     margin-bottom: 16px;
 }
 
+@keyframes colorChangeFirst {
+    0%   { background-color: gold; }
+    100%  { background-color: goldenrod; }
+}
+
+@keyframes colorChangeSecond {
+    0%   { background-color: silver; }
+    100%  { background-color: lightgray; }
+}
+
+@keyframes colorChangeThird {
+    0%   { background-color: #CD7F32; }
+    100%  { background-color: #804A00; }
+}
+
+
 /* Player card */
 .player {
     display: flex;
@@ -54,6 +70,27 @@ body {
     margin-bottom: 10px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.player.first {
+    background-color: goldenrod;
+    animation-name: colorChangeFirst;
+    animation-duration: 4s; /* Duration of one cycle */
+    animation-iteration-count: infinite alternate; /* Loop the animation forever */
+}
+
+.player.second {
+    background-color: silver;
+    animation-name: colorChangeSecond;
+    animation-duration: 4s; /* Duration of one cycle */
+    animation-iteration-count: infinite alternate; /* Loop the animation forever */
+}
+
+.player.third {
+    background-color: #CD7F32;
+    animation-name: colorChangeThird;
+    animation-duration: 4s; /* Duration of one cycle */
+    animation-iteration-count: infinite alternate; /* Loop the animation forever */
 }
 
 /* Rank */

@@ -14,7 +14,7 @@ const leaderboardList = document.getElementById("leaderboardList");
 async function loadLeaderboard() {
     try {
         const { data, error } = await supabase
-            .from('DashboardDisplay') // change table name if needed
+            .from('DashboardDisplay') // 
             .select('id, player_id, player_name, score, category')
             .order('score', { ascending: false });
 
@@ -54,10 +54,22 @@ function renderLeaderboard(entries) {
           <div class="category">${entry.category}</div>
         </div>
         <div class="score">${entry.score}</div>
-      `;
+      `;``
 
+      switch(index+1) {
+      case 1 :
+        row.classList.add("first")
+        break;
+      case 2 :
+        row.classList.add("second")
+        break;
+      case 3 :
+        row.classList.add("third")
+        break;
+    }
         leaderboardList.appendChild(row);
     });
+    
 }
 
 loadLeaderboard();
