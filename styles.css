@@ -124,3 +124,52 @@ body {
     font-weight: bold;
     color: #2563eb;
 }
+
+/* ===============================
+   Leaderboard Tabs / Navbar
+=============================== */
+
+.navbar {
+    max-width: 420px;
+    margin: 0 auto 12px auto;
+    padding: 0 16px;
+    text-align: center;
+}
+
+.navbar h2 {
+    font-size: 1rem;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+/* Tabs container */
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* Individual tab button */
+.tab {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+/* Hover effect */
+.tab:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+/* Active tab */
+.tab.active {
+    background: #ffd700;
+    color: #111827;
+    font-weight: 600;
+}

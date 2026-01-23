@@ -9,6 +9,7 @@
 </head>
 
 <body>
+  
 
   <!-- Animated WebP Background -->
   <div class="background"></div>
@@ -19,8 +20,18 @@
   <!-- Leaderboard Content -->
   <main class="leaderboard">
     <h1 class="title">🏆 Leaderboard</h1>
+     <header class="navbar">
+  <h2>Filter by</h2>
+  <nav class="tabs">
+    <button class="tab active" data-sort="xp">XP Earned</button>
+    <button class="tab" data-sort="missions">Missions</button>
+    <button class="tab" data-sort="votes">Votes</button>
+  </nav>
+</header>
+
     <section id="leaderboardList" aria-live="polite"></section>
   </main>
+ 
 
   <!-- Supabase-powered JS -->
   <script type="module" src="script.js"></script>

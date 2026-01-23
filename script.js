@@ -15,8 +15,8 @@ async function loadLeaderboard() {
     try {
         const { data, error } = await supabase
             .from('DashboardDisplay') // 
-            .select('id, player_id, player_name, score, category')
-            .order('score', { ascending: false });
+            .select('*')
+            .order('xp', { ascending: false });
 
         if (error) throw error;
 
@@ -53,7 +53,7 @@ function renderLeaderboard(entries) {
           <div class="name">${entry.player_name}</div>
           <div class="category">${entry.category}</div>
         </div>
-        <div class="score">${entry.score}</div>
+        <div class="score">${entry.xp}</div>
       `;``
 
       switch(index+1) {
