@@ -42,7 +42,8 @@ async function loadLeaderboard(sortType = "xp") {
 
     if (error) throw error;
 
-    renderLeaderboard(data);
+    // Pass sortType here
+    renderLeaderboard(data, sortType);
 
   } catch (err) {
     console.error("Supabase error:", err);
@@ -59,7 +60,8 @@ async function loadLeaderboard(sortType = "xp") {
 }
 
 
-function renderLeaderboard(entries) {
+
+function renderLeaderboard(entries, sortType = "xp") {
   leaderboardList.innerHTML = "";
 
   entries.forEach((entry, index) => {
@@ -69,29 +71,36 @@ function renderLeaderboard(entries) {
     row.dataset.id = String(entry.id);
     row.dataset.playerId = String(entry.player_id);
 
-    row.innerHTML = `
-        <div class="rank">${index + 1}</div>
-        <div class="info">
-          <div class="name">${entry.player_name}</div>
-          <div class="category">${entry.category}</div>
-        </div>
-        <div class="score">${entry.xp}</div>
-      `; ``
+    // Dynamically get score
+    const scoreValue = entry[sortType] ?? 0;
 
+    row.innerHTML = `
+      <div class="rank">${index + 1}</div>
+
+      <div class="info">
+        <div class="name">${entry.player_name}</div>
+        <div class="category">${entry.category}</div>
+      </div>
+
+      <div class="score">${scoreValue}</div>
+    `;
+
+    // Top 3 styling
     switch (index + 1) {
       case 1:
-        row.classList.add("first")
+        row.classList.add("first");
         break;
       case 2:
-        row.classList.add("second")
+        row.classList.add("second");
         break;
       case 3:
-        row.classList.add("third")
+        row.classList.add("third");
         break;
     }
+
     leaderboardList.appendChild(row);
   });
-
 }
+
 
 loadLeaderboard("xp");
