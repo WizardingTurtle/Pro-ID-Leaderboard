@@ -45,18 +45,33 @@ body {
 }
 
 @keyframes colorChangeFirst {
-    0%   { background-color: gold; }
-    100%  { background-color: goldenrod; }
+    0% {
+        background-color: gold;
+    }
+
+    100% {
+        background-color: goldenrod;
+    }
 }
 
 @keyframes colorChangeSecond {
-    0%   { background-color: silver; }
-    100%  { background-color: lightgray; }
+    0% {
+        background-color: silver;
+    }
+
+    100% {
+        background-color: lightgray;
+    }
 }
 
 @keyframes colorChangeThird {
-    0%   { background-color: #CD7F32; }
-    100%  { background-color: #804A00; }
+    0% {
+        background-color: #CD7F32;
+    }
+
+    100% {
+        background-color: #804A00;
+    }
 }
 
 
@@ -64,6 +79,9 @@ body {
 .player {
     display: flex;
     align-items: center;
+    gap: 32px;
+    /* 👈 Controls spacing between rank, name, score */
+
     background-color: rgba(255, 255, 255, 0.92);
     color: #111827;
     padding: 12px 14px;
@@ -75,23 +93,60 @@ body {
 .player.first {
     background-color: goldenrod;
     animation-name: colorChangeFirst;
-    animation-duration: 4s; /* Duration of one cycle */
-    animation-iteration-count: infinite alternate; /* Loop the animation forever */
+    animation-duration: 4s;
+    /* Duration of one cycle */
+    animation-iteration-count: infinite alternate;
+    /* Loop the animation forever */
 }
 
 .player.second {
     background-color: silver;
     animation-name: colorChangeSecond;
-    animation-duration: 4s; /* Duration of one cycle */
-    animation-iteration-count: infinite alternate; /* Loop the animation forever */
+    animation-duration: 4s;
+    /* Duration of one cycle */
+    animation-iteration-count: infinite alternate;
+    /* Loop the animation forever */
 }
 
 .player.third {
     background-color: #CD7F32;
     animation-name: colorChangeThird;
-    animation-duration: 4s; /* Duration of one cycle */
-    animation-iteration-count: infinite alternate; /* Loop the animation forever */
+    animation-duration: 4s;
+    /* Duration of one cycle */
+    animation-iteration-count: infinite alternate;
+    /* Loop the animation forever */
 }
+
+/* Leaderboard Column Header */
+.leaderboard-header {
+    display: flex;
+    align-items: center;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+
+    background: rgba(255, 215, 0, 0.9);
+    color: #111827;
+
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Match player layout */
+.leaderboard-header .rank {
+    width: 32px;
+    height: 32px;
+}
+
+.leaderboard-header .info {
+    flex: 1;
+    margin-left: 40px;
+}
+
+.leaderboard-header .score {
+    color: #000000;
+}
+
 
 /* Rank */
 .rank {
@@ -122,7 +177,7 @@ body {
 .score {
     font-size: 1rem;
     font-weight: bold;
-    color: #2563eb;
+    color: #000000;
 }
 
 /* ===============================
@@ -147,12 +202,16 @@ body {
     display: flex;
     justify-content: center;
     gap: 8px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* prevent wrapping */
+    width: 100%;
 }
 
 /* Individual tab button */
 .tab {
-    padding: 6px 14px;
+    flex: 1; /* each tab takes equal space */
+    text-align: center; /* center text */
+    padding: 8px 0; /* vertical padding only */
+    
     border: none;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.2);
