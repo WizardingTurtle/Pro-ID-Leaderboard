@@ -7,6 +7,12 @@ const supabase = createClient(
 );
 
 const leaderboardList = document.getElementById("leaderboardList");
+const scoreHeader = document.getElementById("scoreHeader");
+const filterLabels = {
+  xp: "Total XP",
+  missions: "Missions Completed",
+  votes: "Votes Earned"
+};
 
 /**
  * Fetch leaderboard data from Supabase
@@ -27,8 +33,12 @@ document.querySelectorAll(".tab").forEach(tab => {
     // Get sort type
     const sortType = tab.dataset.sort;
 
+
+    scoreHeader.textContent = filterLabels[sortType] || "Score";
+
     // Reload leaderboard
     loadLeaderboard(sortType);
+
   });
 });
 
@@ -102,5 +112,8 @@ function renderLeaderboard(entries, sortType = "xp") {
   });
 }
 
+
+// Set default header
+scoreHeader.textContent = filterLabels["xp"];
 
 loadLeaderboard("xp");
